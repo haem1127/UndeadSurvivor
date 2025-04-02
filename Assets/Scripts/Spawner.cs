@@ -25,7 +25,8 @@ public class Spawner : MonoBehaviour
         timer += Time.deltaTime;
         // FloorToInt는 소수점 아래는 버리고 Int형으로 바꾸는 함수이다
         // CeilToInt는 소수점 아래를 올리고 Int형으로 바꾸는 함수이다
-        level = Mathf.FloorToInt(GameManager.instance.gameTime / 10f);
+        // Mathf.Min 함수로 인덱스 에러를 막을 수 있다
+        level = Mathf.Min(Mathf.FloorToInt(GameManager.instance.gameTime / 10f), spawnData.Length - 1);
 
 
         // 타이머가 일정 시간 값에 도달하면 소환하도록 작성
